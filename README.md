@@ -50,25 +50,27 @@ Then, go to the [IBM Cloud Dashboard](https://cloud.ibm.com/dashboard/apps/) to 
 server application's endpoint. Once you done that, you can move on to [Step 3](#3-create-the-mobile-application-and-connect-it-to-the-server)
 and deploy your mobile application.
 
-[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy/?repository=https://github.com/IBM/watson-waste-sorter)
+[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy/?repository=https://github.com/gosplit/watson-waste-sorter)
 
 ## 1. Create your visual recognition service
 
 First, we need to clone this repository
 ```shell
-git clone https://github.com/IBM/watson-waste-sorter
+git clone https://github.com/gosplit/watson-waste-sorter
 cd watson-waste-sorter
 ```
 
 Then, we need to login to the Cloud Foundry CLI.
 ```shell
-cf login -a https://api.ng.bluemix.net # Please use a different API endpoint if your IBM Cloud account is not in US-South
+ibmcloud api https://api.ng.bluemix.net # Please use a different API endpoint if your IBM Cloud account is not in US-South
+ibmcloud login
+ibmcloud target --cf
 ```
 
 Next, provision a Lite tier [Visual Recognition](https://cloud.ibm.com/catalog/services/visual-recognition)
 Service and name it `visual-recognition-wws`. You can provision it using the above link or the command below.
 ```shell
-cf create-service watson_vision_combined lite visual-recognition-wws
+ibmcloud cf create-service watson_vision_combined lite visual-recognition-wws
 ```
 
 ## 2. Deploy the server application
