@@ -43,14 +43,10 @@ Create an [IBM Cloud account](https://cloud.ibm.com/registration/) and install t
 
 ## Deploy the Server Application to IBM Cloud
 
-You can either go through [Step 1 and 2](#1-create-your-visual-recognition-service) to create your application server, or
-
-You can simply click the `Deploy to IBM Cloud` button and `Create` the toolchain to provision, train, and run your visual recognition server.
+Go through [Step 1 and 2](#1-create-your-visual-recognition-service) to create your application server.
 Then, go to the [IBM Cloud Dashboard](https://cloud.ibm.com/dashboard/apps/) to verify your server is running and take note of your
 server application's endpoint. Once you done that, you can move on to [Step 3](#3-create-the-mobile-application-and-connect-it-to-the-server)
 and deploy your mobile application.
-
-[![Deploy to IBM Cloud](https://cloud.ibm.com/devops/setup/deploy/button.png)](https://cloud.ibm.com/devops/setup/deploy/?repository=https://github.com/gosplit/watson-waste-sorter)
 
 ## 1. Create your visual recognition service
 
