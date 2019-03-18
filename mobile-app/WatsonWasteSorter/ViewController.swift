@@ -17,6 +17,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var loadingView: NVActivityIndicatorView!
     @IBOutlet weak var main: UIView!
     @IBOutlet weak var shoot: UIImageView!
+    //@IBOutlet weak var view: UIImageView!
+    
     var myImage: UIImage!
     let cameraManager = CameraManager()
     let SERVER_API_ENDPOINT = Bundle.main.infoDictionary!["SERVER_API_ENDPOINT"] as! String
@@ -77,7 +79,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func showAlert(text:String, conf:Int) {
         var res = text
         if res == "Image is either not a waste or it's too blurry, please try it again."{
-            res = "Unclassified"
+            res = "辨識失敗"//"Unclassified"
+        } else if res == "Landfill"{
+            res = "一般垃圾"//"Landfill"
+        } else if res == "Recycle"{
+            res = "資源回收"//"Unclassified"
+        } else if res == "Compost"{
+            res = "堆肥垃圾"//"Unclassified"
         }
         let alert = AlertController(view: UIView(), style: .alert)
         alert.contentWidth = 200
@@ -86,7 +94,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let action = AlertAction(title: "\(res)", style: .cancel) { action in
         }
         let confView = UILabel(frame:CGRect(x: 0, y: 125, width: 200, height: 21))
-        confView.text = "Confident Score: \(conf)%"
+        confView.text = "可信度: \(conf)%" //"Confident Score: \(conf)%"
         confView.font = UIFont(name: "Halvetica", size: 15)
         confView.textAlignment = .center
         action.button.addSubview(confView)
@@ -94,7 +102,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         alert.addAction(action)
         action.button.frame.size.height = 200
         action.button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
-        switch(res){
+        switch(text){
         case "Unclassified":
             action.button.setTitleColor(UIColor.red, for: .normal)
         case "Landfill":
