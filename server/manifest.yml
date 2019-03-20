@@ -5,11 +5,11 @@ declared-services:
     plan: lite
 applications:
 - name: watson-waste-sorter
-  memory: 256M
+  host: watson-waste-sorter-shiny-wallaby
+  memory: 512M
   domain: mybluemix.net
   buildpack: python_buildpack
   path: .
-  random-route: true
   instances: 1
   services:
-  - visual-recognition-wws
+  - Visual Recognition-n9

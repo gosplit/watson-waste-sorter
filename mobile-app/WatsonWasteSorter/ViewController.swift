@@ -86,6 +86,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             res = "資源回收"//"Unclassified"
         } else if res == "Compost"{
             res = "堆肥垃圾"//"Unclassified"
+        } else {
+            res = "非垃圾"
         }
         let alert = AlertController(view: UIView(), style: .alert)
         alert.contentWidth = 200
@@ -94,7 +96,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let action = AlertAction(title: "\(res)", style: .cancel) { action in
         }
         let confView = UILabel(frame:CGRect(x: 0, y: 125, width: 200, height: 21))
-        confView.text = "可信度: \(conf)%" //"Confident Score: \(conf)%"
+        if ( conf > 0 ) {
+            confView.text = "可信度: \(conf)%" //"Confident Score: \(conf)%"
+        }
         confView.font = UIFont(name: "Halvetica", size: 15)
         confView.textAlignment = .center
         action.button.addSubview(confView)
